@@ -1,0 +1,30 @@
+{% extends 'portfolio/base.html'%}
+
+
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3">
+  <h2 class="module-title font-alt">{{ project_detail.title}}</h2>
+  <h5>--<b>{{ project_detail.startdate|date:'M Y'|upper }}-{{ project_detail.enddate|date:'M Y'|upper }}</b>--</h5>
+  {% if project_detail.url %}
+
+  <a href="{{ project_detail.url }}" target="blank"> <u>More Details</u></a>
+  <br>
+
+  {% endif %}
+
+  <div class="font-serif">{{ project_detail.description|safe }}</div>
+<div class="font-serif">
+
+<br>  Code:<br><code>{{ project_detail.Code|safe }}</code>
+
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+
+{% endblock %}

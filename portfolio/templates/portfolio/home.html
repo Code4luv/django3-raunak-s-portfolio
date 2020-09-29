@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+{% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--
+    Document Title
+    =============================================
+    -->
+    <title>Raunak's Portfolio</title>
+    <!--
+    Favicons
+    =============================================
+    -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    
+    <meta name="theme-color" content="#ffffff">
+    <!--
+    Stylesheets
+    =============================================
+
+    -->
+    <!-- Default stylesheets-->
+    <link href="{% static 'assets/lib/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="{% static 'assets/lib/animate.css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/components-font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/et-line-font/et-line-font.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/flexslider/flexslider.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/magnific-popup/dist/magnific-popup.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/simple-text-rotator/simpletextrotator.css' %}" rel="stylesheet">
+    <!-- Main stylesheet and color file-->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+    <link id="color-scheme" href="{% static 'assets/css/colors/default.css' %}" rel="stylesheet">
+  </head>
+  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+      <div class="page-loader">
+        <div class="loader">Loading...</div>
+      </div>
+      <nav class="navbar navbar-custom navbar-transparent navbar-fixed-top one-page" role="navigation">
+        <div class="container">
+
+          <div class="collapse navbar-collapse" id="custom-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#totop">Home</a></li>
+              <li><a class="section-scroll" href="#projects">Projects</a></li>
+              <li><a class="section-scroll" href="#skills">Skills</a></li>
+              <li><a class="section-scroll" href="{% static 'portfolio/Raunak Resume.pdf' %}" target="_blank">Resume</a></li>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Connect Me</a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://www.linkedin.com/in/raunak-rathi-875504a7/" target="_blank">linkdin</a></li>
+                  <li><a href="https://stackoverflow.com/users/4683899/raunak-rathi" target="_blank">Stack Overflow</a></li>
+                  <li><a href="https://www.hackerearth.com/@raunak170" target="_blank">Hackerearth</a></li>
+                  <li><a href="https://www.hackerearth.com/@raunak170" target="_blank">GitHub</a></li>
+                </ul>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+{% block content %}{% endblock %}
+
+      <section class="home-section home-full-height bg-dark bg-gradient" id="home"
+      data-background="{% static 'assets/images/Raunak_image.png' %}">
+        <div class="titan-caption">
+          <div class="caption-content">
+            <div class="font-alt mb-30 titan-title-size-1">Hello &amp; Welcome To</div>
+            <div class="font-alt mb-40 titan-title-size-4">Raunak Rathi's Portfolio</div>
+
+          </div>
+        </div>
+      </section>
+      <div class="main">
+        <section class="module" id="projects">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Projects</h2>
+                <div class="module-subtitle font-serif">Everthing is temporary.
+                  It could be the pain or happiness. Live life in present.</div>
+              </div>
+            </div>
+            {% for project in projects %}
+            <div class="row">
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
+                <div class="team-item">
+
+
+                  <div class="team-image">
+                    <a href="{% url 'detail' project.id  %}" target='blank'><img src="{{ project.image.url }}"/></a>
+
+                  </div>
+
+                  <div class="team-descr font-alt">
+
+                    <a href="{% url 'detail' project.id  %}" target='blank'><div class="team-name">{{ project.title }}</div>
+
+                    <div class="team-role">{{ project.startdate | date:'M Y'|upper}} - {{ project.enddate | date:'M Y'|upper}}</div>
+                  </div>
+
+                </div>
+              </div>
+              {% endfor %}
+          </section>
+          <section class="module-small bg-dark" id="skills">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <div class="callout-text font-alt">
+                  <h2 class="module-title font-alt">Skills</h2>
+                  <div class="module-subtitle font-serif">Learn Explore & Target for Excellence</div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </section>
+          <section class="module" id="works">
+
+            {% for skill in skills %}
+            <div class="row">
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image">
+                    <a href="{{ skill.refer_link }}" target='blank'>
+                      <img src="{{ skill.icon.url }}", style="width:150px;height:100px;"/></a>
+
+                  </div>
+
+                  <div class="team-descr font-alt">
+                    <a href="{{ skill.refer_link }}" target='blank'>
+                      <div class="team-name">{{ skill.name|safe }}</a></div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+          </section>
+
+
+        <footer class="footer bg-dark">
+          <div class="container">
+            <div class="row">
+
+              <div class="col-sm-6">
+                <div class="footer-social-links">
+                  <a href="https://www.facebook.com/raunakrathi.rathi/"><i class="fa fa-facebook"></i></a>
+                  <a href="https://twitter.com/raunak_rathi"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/____skate4lyf/"><i class="fa fa-instagram"></i></a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+      <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK2Axt8xiFYMBMDwwG1XzBQvEbYpzCvFU"></script>
+    </main>
+    <!--
+    JavaScripts
+    =============================================
+    -->
+    <script src="{% static 'assets/lib/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'assets/lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/lib/wow/dist/wow.js' %}"></script>
+    <script src="{% static 'assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js' %}"></script>
+    <script src="{% static 'assets/lib/isotope/dist/isotope.pkgd.js' %}"></script>
+    <script src="{% static 'assets/lib/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+    <script src="{% static 'assets/lib/flexslider/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'assets/lib/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/lib/smoothscroll.js' %}"></script>
+    <script src="{% static 'assets/lib/magnific-popup/dist/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' %}"></script>
+    <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK2Axt8xiFYMBMDwwG1XzBQvEbYpzCvFU"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>
